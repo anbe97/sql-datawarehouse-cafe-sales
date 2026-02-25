@@ -1,0 +1,48 @@
+/*
+===============================================================================
+DDL Script: Create Bronze Tables
+===============================================================================
+Script Purpose:
+    This script creates a table in the 'bronze' schema, dropping the table if it  
+    already exists.
+	  Run this script to re-define the DDL structure of 'bronze' Tables
+    The data types all had to be modified to NVARCHAR due to bad data quality
+    preventing data from being inserted into the table.
+===============================================================================
+*/
+
+IF OBJECT_ID('bronze.exc_cafe_sales', 'U') IS NOT NULL
+    DROP TABLE bronze.exc_cafe_sales;
+GO
+
+CREATE TABLE bronze.exc_cafe_sales (
+    transaction_id      NVARCHAR(50),
+    item                NVARCHAR(50),
+    quantity            INT,
+    price               INT,
+    total_spend         INT,
+    payment_method      NVARCHAR(50),
+    location            NVARCHAR(50),
+    transaction_date    DATE
+);
+GO
+
+
+
+  USE DataWarehouse_Cafe
+IF OBJECT_ID('bronze.cafe_sales', 'U') IS NOT NULL
+    DROP TABLE bronze.cafe_sales;
+GO
+
+CREATE TABLE bronze.cafe_sales (
+    transaction_id      NVARCHAR(50),
+    item                NVARCHAR(50),
+    quantity            NVARCHAR(50),
+    price               NVARCHAR(50),
+    total_spend         NVARCHAR(50),
+    payment_method      NVARCHAR(50),
+    location            NVARCHAR(50),
+    transaction_date    NVARCHAR(50)
+);
+
+GO
