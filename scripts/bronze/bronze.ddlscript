@@ -28,8 +28,6 @@ CREATE TABLE bronze.exc_cafe_sales (
 GO
 
 
-
-  USE DataWarehouse_Cafe
 IF OBJECT_ID('bronze.cafe_sales', 'U') IS NOT NULL
     DROP TABLE bronze.cafe_sales;
 GO
